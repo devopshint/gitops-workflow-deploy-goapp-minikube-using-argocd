@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: 'go-app'
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: 'default'
+  source:
+    path: 'chart'
+    repoURL: 'https://github.com/devopshint/gitops-workflow-deploy-goapp-minikube-using-argocd'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+  project: 'default'
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=false

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-app
+spec:
+  selector:
+    app: go-app
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081 # Match the port where your Go application is running
